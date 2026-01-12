@@ -77,8 +77,9 @@ def main():
     if args.generate_report and successful:
         print("\nGenerating comparison report...")
         analyzer = ResultsAnalyzer()
-        analyzer.generate_comparison_report()
+        analyzer.generate_comprehensive_dashboard()
         analyzer.export_to_csv()
+        print("\nDashboard and CSV report generated successfully!")
 
     sys.exit(0 if not failed else 1)
 
