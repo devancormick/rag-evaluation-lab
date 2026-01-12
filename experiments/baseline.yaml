@@ -1,0 +1,29 @@
+experiment_name: baseline_faiss_e5_fixed
+chunking:
+  strategy: fixed_size
+  params:
+    chunk_size: 512
+    chunk_overlap: 50
+
+embedding:
+  model_family: e5
+  model_name: e5-base
+  device: null  # Auto-detect
+
+vectordb:
+  backend: faiss
+  params:
+    index_type: flat
+    metric: cosine
+
+dataset:
+  name: qasper
+  split: test
+  limit: 100  # Limit for testing
+
+evaluation:
+  k_values: [1, 5, 10]
+  answer_metrics: [rouge_l, exact_match]
+
+output_dir: results
+

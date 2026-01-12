@@ -1,0 +1,33 @@
+experiment_name: texttiling_hnsw_e5
+chunking:
+  strategy: texttiling
+  params:
+    w: 20
+    k: 10
+    smoothing_width: 3
+    smoothing_rounds: 1
+
+embedding:
+  model_family: e5
+  model_name: e5-large
+  device: null
+
+vectordb:
+  backend: faiss
+  params:
+    index_type: hnsw
+    metric: cosine
+    M: 32
+    ef_construction: 200
+
+dataset:
+  name: qasper
+  split: test
+  limit: 100
+
+evaluation:
+  k_values: [1, 5, 10]
+  answer_metrics: [rouge_l, exact_match, bert_score]
+
+output_dir: results
+

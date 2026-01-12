@@ -1,0 +1,30 @@
+experiment_name: bge_qdrant_c99
+chunking:
+  strategy: c99
+  params:
+    window_size: 200
+    similarity_threshold: 0.5
+
+embedding:
+  model_family: bge
+  model_name: bge-large
+  device: null
+
+vectordb:
+  backend: qdrant
+  params:
+    collection_name: rag_eval_bge
+    host: localhost
+    port: 6333
+
+dataset:
+  name: hotpotqa
+  split: test
+  limit: 100
+
+evaluation:
+  k_values: [1, 5, 10]
+  answer_metrics: [rouge_l, exact_match]
+
+output_dir: results
+
