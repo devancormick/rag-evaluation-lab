@@ -16,8 +16,9 @@ This laboratory provides a configurable framework to evaluate RAG systems by com
 - YAML/JSON-based experiment configuration
 - Automated evaluation pipeline
 - Comprehensive metrics: Precision@K, Recall@K, MRR, answer correctness, faithfulness, latency/throughput
-- Results analysis and reporting dashboard
+- **Interactive results dashboard** with Plotly visualizations, summary statistics, and configuration comparison
 - Full reproducibility with Docker support
+- Complete documentation suite
 
 ## Project Structure
 
@@ -70,7 +71,10 @@ pip install -r requirements.txt
 python -m src.pipeline.run_experiment --config experiments/baseline.yaml
 
 # Run all experiments
-python -m src.pipeline.run_all_experiments --config-dir experiments/
+python -m src.pipeline.run_all_experiments --config-dir experiments/ --generate-report
+
+# Generate interactive dashboard from existing results
+python -c "from src.pipeline.results_analyzer import ResultsAnalyzer; ResultsAnalyzer().generate_comprehensive_dashboard()"
 ```
 
 ## Documentation
